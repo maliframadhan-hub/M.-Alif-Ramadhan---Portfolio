@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>M. Alif Ramadhan - Portfolio</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/logo-alif.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Devicon (tech stack icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css">
+</head>
+
+<body>
+
+    <!-- Ambient background blobs -->
+    <div class="aurora" aria-hidden="true"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+
+        <a href="#home" class="logo mono">
+            <span class="logo__prompt">$</span>
+            <span class="logo__user">alif</span>
+            <span class="logo__at">@portfolio</span>
+            <span class="logo__cursor" aria-hidden="true"></span>
+        </a>
+
+        <div class="nav-right">
+
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Ganti tema terang/gelap" title="Ganti tema">
+                <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/>
+                    <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                        <path d="M12 2.5v2.4"/>
+                        <path d="M12 19.1v2.4"/>
+                        <path d="M4.2 4.2l1.7 1.7"/>
+                        <path d="M18.1 18.1l1.7 1.7"/>
+                        <path d="M2.5 12h2.4"/>
+                        <path d="M19.1 12h2.4"/>
+                        <path d="M4.2 19.8l1.7-1.7"/>
+                        <path d="M18.1 5.9l1.7-1.7"/>
+                    </g>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20.5 14.2A8.6 8.6 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <button type="button" class="secure-badge mono" id="secureBadge" aria-haspopup="dialog" aria-controls="secureModal">
+                <span class="secure-badge__dot"></span>
+                <span>SECURE</span>
+                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <ul id="navMenu">
+            <li><a href="#home" data-label="00"><span>Home</span></a></li>
+            <li><a href="#tentang" data-label="01"><span>Tentang</span></a></li>
+            <li><a href="#skills" data-label="02"><span>Skills</span></a></li>
+            <li><a href="#stack" data-label="03"><span>Stack</span></a></li>
+            <li><a href="#project" data-label="04"><span>Project</span></a></li>
+            <li><a href="#organisasi" data-label="05"><span>Organisasi</span></a></li>
+            <li><a href="#sertifikat" data-label="06"><span>Sertifikat</span></a></li>
+            <li><a href="#kontak" data-label="07"><span>Kontak</span></a></li>
+            <li class="navMenu__cta-item">
+                <a
+                    href="/CV-Alif-Ramadhan.pdf"
+                    class="navMenu__cta"
+                    download="CV-M-Alif-Ramadhan.pdf"
+                >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                    <span>Download CV</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div class="nav-scrim" id="navScrim" hidden></div>
+
+    <!-- Skill Detail Modal -->
+    <div class="modal-scrim" id="skillModalScrim" hidden>
+        <div class="skill-modal" id="skillModal" role="dialog" aria-modal="true" aria-labelledby="skillModalTitle">
+
+            <button type="button" class="skill-modal__close" id="skillModalClose" aria-label="Tutup">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+
+            <div class="skill-modal__head">
+                <span class="skill-modal__icon" id="skillModalIcon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <h3 id="skillModalTitle"></h3>
+            </div>
+
+            <div class="skill-modal__body" id="skillModalBody"></div>
+
+        </div>
+    </div>
+
+    <!-- Security & Compliance Modal -->
+    <div class="modal-scrim" id="secureModalScrim" hidden>
+        <div class="secure-modal" id="secureModal" role="dialog" aria-modal="true" aria-labelledby="secureModalTitle">
+
+            <button type="button" class="secure-modal__close" id="secureModalClose" aria-label="Tutup">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+
+            <div class="secure-modal__head">
+                <span class="secure-modal__icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <div>
+                    <h3 id="secureModalTitle">Security &amp; Compliance Report</h3>
+                    <p>Aplikasi ini dirancang dengan standar keamanan modern.</p>
+                </div>
+            </div>
+
+            <div class="secure-modal__list">
+
+                <div class="secure-item">
+                    <span class="secure-item__icon secure-item__icon--cloud">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 18h10a4 4 0 0 0 .5-7.97 5.5 5.5 0 0 0-10.6-1.5A4.5 4.5 0 0 0 7 18Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="secure-item__title">Protected by Cloudflare CDN</p>
+                        <p class="secure-item__desc">Global Edge Caching &amp; WAF Active</p>
+                    </div>
+                </div>
+
+                <div class="secure-item">
+                    <span class="secure-item__icon secure-item__icon--shield">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="secure-item__title">XSS Protection Active (CSP)</p>
+                        <p class="secure-item__desc">Content Security Policy Implemented</p>
+                    </div>
+                </div>
+
+                <div class="secure-item">
+                    <span class="secure-item__icon secure-item__icon--lock">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="10.5" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5"/></svg>
+                    </span>
+                    <div>
+                        <p class="secure-item__title">HSTS (Strict Transport Security)</p>
+                        <p class="secure-item__desc">Force HTTPS Connection Active</p>
+                    </div>
+                </div>
+
+                <div class="secure-item">
+                    <span class="secure-item__icon secure-item__icon--terminal">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="m7 9 3 3-3 3M13 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="secure-item__title">Input Sanitization Enforced</p>
+                        <p class="secure-item__desc">Mencegah Injeksi Kode Berbahaya (XSS/SQLi)</p>
+                    </div>
+                </div>
+
+                <div class="secure-item">
+                    <span class="secure-item__icon secure-item__icon--bolt">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="secure-item__title">DDoS Rate Limiting</p>
+                        <p class="secure-item__desc">Mencegah Kelebihan Beban Lalu Lintas</p>
+                    </div>
+                </div>
+
+                <div class="secure-item">
+                    <span class="secure-item__icon secure-item__icon--server">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 9h.01M8 15h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                    <div>
+                        <p class="secure-item__title">Vercel Deployment Integrity</p>
+                        <p class="secure-item__desc">Serverless Functions Isolated &amp; Monitored</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="secure-modal__foot mono">
+                <span class="secure-modal__status"><span class="secure-badge__dot"></span>All systems operational</span>
+                <span class="secure-modal__version">v2.1.0 · 2026</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Right-click / Copy Protection Modal -->
+    <div class="modal-scrim" id="guardModalScrim" hidden>
+        <div class="guard-modal" id="guardModal" role="alertdialog" aria-modal="true" aria-labelledby="guardModalTitle">
+
+            <span class="guard-modal__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.5v4.2M12 15.6h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+
+            <h3 id="guardModalTitle">Akses Ditolak</h3>
+            <p class="guard-modal__reason mono" id="guardModalReason">⚠ KLIK KANAN TERDETEKSI.</p>
+
+            <p class="guard-modal__desc">
+                Tindakan Anda merekayasa, memodifikasi, atau mengakses sistem tanpa hak merupakan pelanggaran hukum sesuai dengan <strong>UU ITE Pasal 30 ayat (1), (2), dan (3)</strong>.
+            </p>
+
+            <p class="guard-modal__log mono">Setiap aktivitas dicatat demi keamanan sistem.</p>
+
+            <button type="button" class="guard-modal__btn" id="guardModalClose">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Saya Mengerti
+            </button>
+
+        </div>
+    </div>
+
+<!-- Hero Section -->
+<header id="home">
+
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg hero-bg--alt" aria-hidden="true"></div>
+
+    <div class="hero-text">
+
+        <p class="eyebrow mono">$ whoami</p>
+
+        <h1>
+            Halo, saya
+            <span class="highlight">M. Alif Ramadhan</span>
+        </h1>
+
+        <p class="typing mono"></p>
+
+        <p class="hero-desc">
+            Software Engineer &amp; Full Stack Developer yang membangun aplikasi web,
+            desktop, dan mobile dengan fokus pada systems integration,
+            modern development, dan DevOps.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#project" class="btn btn-primary">
+                Lihat Project
+            </a>
+
+            <a href="#kontak" class="btn btn-ghost">
+                Hubungi Saya
+            </a>
+
+        </div>
+
+        <div class="hero-stats mono">
+            <div class="hero-stat">
+                <span class="hero-stat__num">2+</span>
+                <span class="hero-stat__label">Years Exp</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat__num">8+</span>
+                <span class="hero-stat__label">Projects</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat__num">8+</span>
+                <span class="hero-stat__label">Awards</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat__num">&#8734;</span>
+                <span class="hero-stat__label">Creativity</span>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="#tentang" class="scroll-cue" aria-label="Gulir ke bawah">
+        <span>scroll</span>
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+            <rect x="1" y="1" width="12" height="18" rx="6" stroke="currentColor" stroke-width="1.2"/>
+            <circle class="scroll-cue__ball" cx="7" cy="6" r="2" fill="currentColor"/>
+        </svg>
+    </a>
+
+</header>
+
+    <!-- Tentang -->
+    <section id="tentang">
+
+        <div class="section-head">
+            <p class="eyebrow mono">$ cat about-me.md</p>
+            <h2>About Me</h2>
+        </div>
+
+        <div class="about">
+
+            <figure class="about__photo">
+                <div class="photo-frame">
+                    <img src="/foto-alif.png" alt="Foto M. Alif Ramadhan" onerror="this.closest('.photo-frame').classList.add('photo-frame--fallback')">
+                    <div class="photo-placeholder">
+                        <span>AR</span>
+                    </div>
+                </div>
+
+                <figcaption class="mono photo-caption">
+                    //m-alif-ramadhan.png
+                </figcaption>
+            </figure>
+
+            <div class="about__text">
+                <p>
+                    Saya adalah mahasiswa Teknik Komputer yang senang mengubah ide menjadi aplikasi yang benar-benar dapat digunakan. Saya memiliki pengalaman mengembangkan aplikasi web, desktop, dan mobile, serta mengeksplorasi backend, database, dan deployment.
+                </p>
+                <p>
+                    Di luar dunia teknologi, saya juga aktif berpartisipasi dalam berbagai organisasi dan event. Pengalaman tersebut membantu saya mengembangkan kemampuan komunikasi, kerja sama tim, kepemimpinan, dan problem solving.
+                </p>
+                <p>
+                    Saat ini saya berfokus pada software engineering, full-stack development, dan DevOps, dengan menggunakan Python, JavaScript, Flutter, serta berbagai tools modern dalam proses pengembangan.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Motto hidup -->
+        <div class="manifesto">
+            <span class="manifesto__badge mono">personal manifesto</span>
+            <p class="manifesto__quote">
+                "Cara terbaik untuk memprediksi masa depan adalah dengan menciptakannya sendiri."
+            </p>
+            <p class="manifesto__author mono">— Alif</p>
+        </div>
+
+    </section>
+
+    <!-- My Skills & Expertise -->
+    <section id="skills">
+
+        <div class="section-head">
+            <p class="eyebrow mono">$ cat skills.json</p>
+            <h2>My Skills &amp; Expertise</h2>
+        </div>
+
+        <div class="skills-grid">
+
+            <article class="skill-card" data-accent="violet">
+                <div class="skill-card__head">
+                    <span class="skill-card__icon skill-card__icon--violet">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <h3>Cybersecurity</h3>
+                </div>
+
+                <div class="skill-card__level">
+                    <span class="skill-card__level-label">Level: Intermediate</span>
+                    <div class="skill-card__bar"><div class="skill-card__bar-fill skill-card__bar-fill--violet" style="width: 55%;"></div></div>
+                </div>
+
+                <p class="skill-card__desc">
+                    Keahlian dalam Network Pentesting, Threat Analysis, dan Bug Bounty (Android). Terbiasa dengan tools keamanan standar industri.
+                </p>
+
+                <div class="skill-card__tags">
+                    <span>Pentesting</span><span>Threat Analysis</span><span>OWASP</span><span>Burp Suite</span>
+                </div>
+
+                <button type="button" class="skill-card__toggle mono">
+                    <svg class="skill-card__chevron" width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25 7 8.75l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Klik untuk Detail Lanjutan
+                </button>
+
+                <div class="skill-card__detail">
+                    <p>
+                        Pernah melakukan simulasi pentest sederhana pada aplikasi web dan mobile, termasuk pengujian celah XSS, SQL Injection, dan insecure authentication, lalu melaporkan temuan mengikuti kerangka OWASP Top 10.
+                    </p>
+                </div>
+            </article>
+
+            <article class="skill-card" data-accent="green">
+                <div class="skill-card__head">
+                    <span class="skill-card__icon skill-card__icon--green">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m9 8-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <h3>Web Development &amp; Code</h3>
+                </div>
+
+                <div class="skill-card__level">
+                    <span class="skill-card__level-label">Level: Intermediate</span>
+                    <div class="skill-card__bar"><div class="skill-card__bar-fill skill-card__bar-fill--green" style="width: 65%;"></div></div>
+                </div>
+
+                <p class="skill-card__desc">
+                    Mampu membangun website responsif dan modern dengan fokus pada HTML, CSS, JavaScript. Menguasai Python untuk "scripting" dasar.
+                </p>
+
+                <div class="skill-card__tags">
+                    <span>HTML/CSS</span><span>JavaScript</span><span>Python</span><span>Tailwind CSS</span>
+                </div>
+
+                <button type="button" class="skill-card__toggle mono">
+                    <svg class="skill-card__chevron" width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25 7 8.75l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Klik untuk Detail Lanjutan
+                </button>
+
+                <div class="skill-card__detail">
+                    <p>
+                        Terbiasa membangun antarmuka responsif dari wireframe hingga produksi, mengintegrasikan REST API sederhana, serta menerapkan praktik dasar performa dan aksesibilitas web modern.
+                    </p>
+                </div>
+            </article>
+
+            <article class="skill-card" data-accent="teal">
+                <div class="skill-card__head">
+                    <span class="skill-card__icon skill-card__icon--teal">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19c.5-3 2.7-5 5.5-5s5 2 5.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M15.2 19c.4-2.3 1.9-3.9 3.8-4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </span>
+                    <h3>Leadership &amp; Tools</h3>
+                </div>
+
+                <div class="skill-card__level">
+                    <span class="skill-card__level-label">Level: Advanced</span>
+                    <div class="skill-card__bar"><div class="skill-card__bar-fill skill-card__bar-fill--teal" style="width: 85%;"></div></div>
+                </div>
+
+                <p class="skill-card__desc">
+                    Berpengalaman dalam kepemimpinan organisasi, manajemen proyek, penyelesaian masalah, dan deployment menggunakan Vercel.
+                </p>
+
+                <div class="skill-card__tags">
+                    <span>Leadership</span><span>Git/GitHub</span><span>Vercel</span>
+                </div>
+
+                <button type="button" class="skill-card__toggle mono">
+                    <svg class="skill-card__chevron" width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25 7 8.75l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Klik untuk Detail Lanjutan
+                </button>
+
+                <div class="skill-card__detail">
+                    <p>
+                        Memimpin beberapa tim proyek kampus dari perencanaan hingga eksekusi, mengelola versi kode dengan Git/GitHub, serta men-deploy aplikasi ke production menggunakan Vercel.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- Tech Stack (marquee) -->
+    <section id="stack">
+
+        <div class="section-head">
+            <p class="eyebrow mono">$ ls ./stack</p>
+            <h2>My Go-To Tech Stack</h2>
+        </div>
+
+        <div class="marquee" role="list" aria-label="Tech stack">
+            <div class="marquee__track">
+                <div class="marquee__group" aria-hidden="false">
+                    <div class="stack-item" role="listitem"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-html5-plain colored"></i><span>HTML</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-mariadb-plain colored"></i><span>MariaDB</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-github-original"></i><span>GitHub</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-vercel-original"></i><span>Vercel</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-canva-original colored"></i><span>Canva</span></div>
+                    <div class="stack-item" role="listitem"><i class="devicon-photoshop-plain colored"></i><span>Adobe</span></div>
+                </div>
+                <div class="marquee__group" aria-hidden="true">
+                    <div class="stack-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="stack-item"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+                    <div class="stack-item"><i class="devicon-html5-plain colored"></i><span>HTML</span></div>
+                    <div class="stack-item"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
+                    <div class="stack-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                    <div class="stack-item"><i class="devicon-mariadb-plain colored"></i><span>MariaDB</span></div>
+                    <div class="stack-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="stack-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+                    <div class="stack-item"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
+                    <div class="stack-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                    <div class="stack-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                    <div class="stack-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                    <div class="stack-item"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+                    <div class="stack-item"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
+                    <div class="stack-item"><i class="devicon-vercel-original"></i><span>Vercel</span></div>
+                    <div class="stack-item"><i class="devicon-canva-original colored"></i><span>Canva</span></div>
+                    <div class="stack-item"><i class="devicon-photoshop-plain colored"></i><span>Adobe</span></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+<!-- =========================
+     PROJECT
+     ========================= -->
+<section id="project">
+
+    <div class="section-head">
+        <p class="eyebrow mono">$ ls ./projects</p>
+        <h2>Project Saya</h2>
+    </div>
+
+    <div class="project-container">
+
+        <!-- =========================
+             PROJECT 01
+             ========================= -->
+        <article class="card">
+
+            <div class="card__thumb card__thumb--01">
+                <img
+                    src="/osim.png"
+                    alt="Thumbnail OSIM MAN 1 Medan Official Website"
+                    loading="lazy"
+                    onerror="this.closest('.card__thumb').classList.add('card__thumb--fallback')"
+                >
+
+                <span class="card__thumb-fallback mono">
+                    OSIM-WEB
+                </span>
+            </div>
+
+            <p class="card__id mono">
+                SYS/01 — OSIM-WEB
+            </p>
+
+            <h3>
+                OSIM MAN 1 Medan Official Website
+            </h3>
+
+            <p class="card__desc">
+                Website resmi OSIM MAN 1 Medan yang menyajikan
+                informasi terkini tentang siswa/siswi MAN 1 Medan.
+            </p>
+
+            <div class="card__tags">
+                <span>HTML</span>
+                <span>Tailwind CSS</span>
+                <span>JavaScript</span>
+            </div>
+
+            <a
+                href="https://osimman1medan.vercel.app/"
+                class="card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Project
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             PROJECT 02
+             ========================= -->
+        <article class="card">
+
+            <div class="card__thumb card__thumb--02">
+                <img
+                    src="/sistem.jpeg"
+                    alt="Thumbnail Sistem Monitoring Kelas"
+                    loading="lazy"
+                    onerror="this.closest('.card__thumb').classList.add('card__thumb--fallback')"
+                >
+
+                <span class="card__thumb-fallback mono">
+                    KLS-MNG
+                </span>
+            </div>
+
+            <p class="card__id mono">
+                SYS/02 — KLS-MNG
+            </p>
+
+            <h3>
+                Sistem Monitoring Kelas
+            </h3>
+
+            <p class="card__desc">
+                Aplikasi monitoring kelas secara real time berbasis
+                web dengan DBMS MySQL dan implementasi konsep CRUD.
+            </p>
+
+            <div class="card__tags">
+                <span>MySQL</span>
+                <span>PHP</span>
+                <span>CRUD</span>
+            </div>
+
+            <a
+                href="https://sistemmonitoringkelas.page.gd/"
+                class="card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Project
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             PROJECT 03
+             ========================= -->
+        <article class="card">
+
+            <div class="card__thumb card__thumb--03">
+                <img
+                    src="/proyekpenjualan.jpeg"
+                    alt="Thumbnail Proyek Penjualan"
+                    loading="lazy"
+                    onerror="this.closest('.card__thumb').classList.add('card__thumb--fallback')"
+                >
+
+                <span class="card__thumb-fallback mono">
+                    PJL-PROJ
+                </span>
+            </div>
+
+            <p class="card__id mono">
+                SYS/03 — PJL-PROJ
+            </p>
+
+            <h3>
+                Proyek Penjualan
+            </h3>
+
+            <p class="card__desc">
+                Aplikasi penjualan berbasis web dengan implementasi
+                konsep CRUD dan integrasi dengan database MySQL.
+            </p>
+
+            <div class="card__tags">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>Laravel</span>
+            </div>
+
+            <a
+                href="https://proyekpenjualan.infinityfreeapp.com/"
+                class="card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Project
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             PROJECT 04
+             ========================= -->
+        <article class="card">
+
+            <div class="card__thumb card__thumb--04">
+                <img
+                    src="/recyntai.png"
+                    alt="Thumbnail RECYNT AI"
+                    loading="lazy"
+                    onerror="this.closest('.card__thumb').classList.add('card__thumb--fallback')"
+                >
+
+                <span class="card__thumb-fallback mono">
+                    AI-PROJ
+                </span>
+            </div>
+
+            <p class="card__id mono">
+                SYS/04 — AI-PROJ
+            </p>
+
+            <h3>
+                RECYNT AI - Waste Detection System
+            </h3>
+
+            <p class="card__desc">
+                Sistem deteksi limbah berbasis kecerdasan buatan
+                untuk mendeteksi dan mengklasifikasikan jenis limbah.
+            </p>
+
+            <div class="card__tags">
+                <span>Python</span>
+                <span>Node.js</span>
+                <span>YOLOv8</span>
+            </div>
+
+            <a
+                href="https://recynt-ai.vercel.app/"
+                class="card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Project
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             PROJECT 05
+             ========================= -->
+        <article class="card">
+
+            <div class="card__thumb card__thumb--05">
+                <img
+                    src="/streamlit.png"
+                    alt="Thumbnail Analisis Kelulusan Mahasiswa"
+                    loading="lazy"
+                    onerror="this.closest('.card__thumb').classList.add('card__thumb--fallback')"
+                >
+
+                <span class="card__thumb-fallback mono">
+                    MHS-PROJ
+                </span>
+            </div>
+
+            <p class="card__id mono">
+                SYS/05 — MHS-PROJ
+            </p>
+
+            <h3>
+                Analisis Kelulusan Mahasiswa
+            </h3>
+
+            <p class="card__desc">
+                Analisis data kelulusan mahasiswa menggunakan
+                teknologi Python dan Matplotlib.
+            </p>
+
+            <div class="card__tags">
+                <span>Python</span>
+                <span>Streamlit</span>
+                <span>Pandas</span>
+            </div>
+
+            <a
+                href="https://9wowf62gvi4vvjyr2d23st.streamlit.app/"
+                class="card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Project
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             PROJECT 06
+             ========================= -->
+        <article class="card">
+
+            <div class="card__thumb card__thumb--06">
+                <img
+                    src="/webnayla.png"
+                    alt="Thumbnail Project Ucapan Ulang Tahun"
+                    loading="lazy"
+                    onerror="this.closest('.card__thumb').classList.add('card__thumb--fallback')"
+                >
+
+                <span class="card__thumb-fallback mono">
+                    NYL-HBD
+                </span>
+            </div>
+
+            <p class="card__id mono">
+                SYS/06 — NYL-HBD
+            </p>
+
+            <h3>
+                Project Ucapan Ulang Tahun
+            </h3>
+
+            <p class="card__desc">
+                Project ucapan ulang tahun berbasis animasi
+                yang kreatif dan interaktif.
+            </p>
+
+            <div class="card__tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+
+            <a
+                href="https://happy-birthday-nayla.vercel.app/"
+                class="card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Project
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+    </div>
+
+    <p class="section-note mono">
+        // explore my projects — click to visit
+    </p>
+
+</section>
+
+    <!-- Pengalaman Organisasi -->
+    <section id="organisasi">
+
+        <div class="section-head">
+            <p class="eyebrow mono">$ cat organisasi.log</p>
+            <h2>Pengalaman Organisasi & Kepanitiaan</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__body">
+                    <div class="timeline__text">
+                        <p class="timeline__period mono">2023 — 2024</p>
+                        <h3>OSIM MAN 1 Medan</h3>
+                        <p class="timeline__role">Ketua / Bidang Informasi dan Teknologi</p>
+                        <p class="timeline__desc">
+                            Memimpin tim dalam mengelola sistem informasi, website, dan media sosial OSIM MAN 1 Medan. Bertanggung jawab atas seluruh aspek teknologi informasi, termasuk pengembangan dan pemeliharaan platform digital.
+                        </p>
+                    </div>
+                    <div class="timeline__doc">
+                        <img src="ketuait.jpeg" alt="Dokumentasi Nama Organisasi / Himpunan Mahasiswa" loading="lazy" onerror="this.closest('.timeline__doc').classList.add('timeline__doc--fallback')">
+                        <span class="timeline__doc-fallback mono">DOC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__body">
+                    <div class="timeline__text">
+                        <p class="timeline__period mono">2023 - 2024</p>
+                        <h3>Pandu Digital MAN 1 Medan</h3>
+                        <p class="timeline__role">Ketua Umum</p>
+                        <p class="timeline__desc">
+                            Memimpin organisasi Pandu Digital MAN 1 Medan, yang berfokus pada pengembangan keterampilan digital dan teknologi bagi siswa. Bertanggung jawab atas perencanaan, koordinasi, dan pelaksanaan program-program organisasi.
+                        </p>
+                    </div>
+                    <div class="timeline__doc">
+                        <img src="ketum_pandig.jpeg" alt="Dokumentasi Ketua Umum Pandu Digital MAN 1 Medan" loading="lazy" onerror="this.closest('.timeline__doc').classList.add('timeline__doc--fallback')">
+                        <span class="timeline__doc-fallback mono">DOC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__body">
+                    <div class="timeline__text">
+                        <p class="timeline__period mono">2024</p>
+                        <h3>Campus Expo 2024 MAN 1 Medan</h3>
+                        <p class="timeline__role">Anggota / Divisi Publikasi dan Dokumentasi</p>
+                        <p class="timeline__desc">
+                            Berperan sebagai anggota divisi publikasi dan dokumentasi dalam event Campus Expo 2024 MAN 1 Medan.
+                        </p>
+                    </div>
+                    <div class="timeline__doc">
+                        <img src="ce24.jpg" alt="Dokumentasi Campus Expo 2024" loading="lazy" onerror="this.closest('.timeline__doc').classList.add('timeline__doc--fallback')">
+                        <span class="timeline__doc-fallback mono">DOC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__body">
+                    <div class="timeline__text">
+                        <p class="timeline__period mono">2025 - 2026</p>
+                        <h3>UKM EPS Politeknik Negeri Medan</h3>
+                        <p class="timeline__role">Anggota / Bidang Speech</p>
+                        <p class="timeline__desc">
+                            Berperan sebagai anggota bidang speech pada UKM EPS Politeknik Negeri Medan.
+                        </p>
+                    </div>
+                    <div class="timeline__doc">
+                        <img src="devtek.jpg" alt="Dokumentasi UKM EPS Politeknik Negeri Medan" loading="lazy" onerror="this.closest('.timeline__doc').classList.add('timeline__doc--fallback')">
+                        <span class="timeline__doc-fallback mono">DOC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__body">
+                    <div class="timeline__text">
+                        <p class="timeline__period mono">2026 - Sekarang</p>
+                        <h3>Developer Student Community</h3>
+                        <p class="timeline__role">Staff / Inti Teknis</p>
+                        <p class="timeline__desc">
+                            Berperan sebagai staff inti teknis pada Developer Student Community, bertanggung jawab dalam pengembangan dan pemeliharaan proyek-proyek teknologi yang dijalankan oleh komunitas.
+                        </p>    
+                    </div>
+                    <div class="timeline__doc">
+                        <img src="devtek.jpeg" alt="Dokumentasi Developer Student Community" loading="lazy" onerror="this.closest('.timeline__doc').classList.add('timeline__doc--fallback')">
+                        <span class="timeline__doc-fallback mono">DOC</span>
+                    </div>
+                </div>
+
+        </div>
+
+        <p class="section-note mono">// pengalaman organisasi & kepanitiaan</p>
+
+    </section>
+
+   <!-- Sertifikat -->
+<section id="sertifikat">
+
+    <div class="section-head">
+        <p class="eyebrow mono">$ ls ./sertifikat</p>
+        <h2>Sertifikat & Pencapaian</h2>
+    </div>
+
+    <div class="cert-grid">
+
+        <!-- =========================
+             CERT/01
+             ========================= -->
+        <article class="cert-card">
+
+            <div class="cert-card__thumb">
+                <img
+                    src="/pandig.jpeg"
+                    alt="Thumbnail Sertifikat 1"
+                    loading="lazy"
+                    onerror="this.closest('.cert-card__thumb').classList.add('cert-card__thumb--fallback')"
+                >
+
+                <span class="cert-card__thumb-fallback mono">
+                    CERT
+                </span>
+            </div>
+
+            <p class="cert-card__id mono">
+                CERT/01
+            </p>
+
+            <h3>
+                Ketua Umum Pandu Digital MAN 1 Medan
+            </h3>
+
+            <p class="cert-card__issuer">
+                Diterbitkan oleh - Pandu Digital MAN 1 Medan
+            </p>
+
+            <p class="cert-card__year mono">
+                2024
+            </p>
+
+            <a
+                href="/pandig.jpeg"
+                class="cert-card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Sertifikat
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             CERT/02
+             ========================= -->
+        <article class="cert-card">
+
+            <div class="cert-card__thumb">
+                <img
+                    src="/IT%20Osim.jpeg"
+                    alt="Thumbnail Sertifikat 2"
+                    loading="lazy"
+                    onerror="this.closest('.cert-card__thumb').classList.add('cert-card__thumb--fallback')"
+                >
+
+                <span class="cert-card__thumb-fallback mono">
+                    CERT
+                </span>
+            </div>
+
+            <p class="cert-card__id mono">
+                CERT/02
+            </p>
+
+            <h3>
+                Ketua IT OSIM MAN 1 Medan
+            </h3>
+
+            <p class="cert-card__issuer">
+                Diterbitkan oleh - OSIM MAN 1 Medan
+            </p>
+
+            <p class="cert-card__year mono">
+                2024
+            </p>
+
+            <a
+                href="/IT%20Osim.jpeg"
+                class="cert-card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Sertifikat
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+        <!-- =========================
+             CERT/03
+             ========================= -->
+        <article class="cert-card">
+
+            <div class="cert-card__thumb">
+                <img
+                    src="/Lokalkarya.jpeg"
+                    alt="Thumbnail Sertifikat 3"
+                    loading="lazy"
+                    onerror="this.closest('.cert-card__thumb').classList.add('cert-card__thumb--fallback')"
+                >
+
+                <span class="cert-card__thumb-fallback mono">
+                    CERT
+                </span>
+            </div>
+
+            <p class="cert-card__id mono">
+                CERT/03
+            </p>
+
+            <h3>
+                Lokakarya Pandu Digital
+            </h3>
+
+            <p class="cert-card__issuer">
+                Diterbitkan oleh - Direktorat Jenderal Aplikasi Informatika Kementerian Komunikasi dan Informatika
+            </p>
+
+            <p class="cert-card__year mono">
+                2022
+            </p>
+
+            <a
+                href="/Lokalkarya.jpeg"
+                class="cert-card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Sertifikat
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+
+
+<article class="cert-card">
+
+    <div class="cert-card__thumb cert-card__thumb--pdf cert04-thumb">
+        <canvas
+            id="cert04-pdf"
+            aria-label="Preview Sertifikat 4"
+        ></canvas>
+
+        <span class="cert-card__pdf-label mono">
+            PDF
+        </span>
+    </div>
+
+    <p class="cert-card__id mono">CERT/04</p>
+
+    <h3>Workshop Capacity Building</h3>
+
+    <p class="cert-card__issuer">
+        Diterbitkan oleh - Pandu Digital MAN 1 Medan
+    </p>
+
+    <p class="cert-card__year mono">
+        2022
+    </p>
+
+    <a
+        href="/M.%20ALIF%20RAMADHAN.pdf"
+        class="cert-card__btn"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Lihat Sertifikat
+
+        <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+        >
+            <path
+                d="M3 11L11 3M11 3H4M11 3V10"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+    </a>
+
+</article>
+
+<!-- =========================
+     CERT/05 - PDF 2 HALAMAN
+     ========================= -->
+<article class="cert-card">
+
+    <div class="cert-card__thumb cert-card__thumb--pdf">
+
+        <canvas id="cert05-pdf"></canvas>
+
+        <span class="cert-card__pdf-label mono">
+            PDF
+        </span>
+
+    </div>
+
+    <p class="cert-card__id mono">
+        CERT/05
+    </p>
+
+    <h3>
+        Jambore Nasional TIK Ke-2 Pandu Digital
+    </h3>
+
+    <p class="cert-card__issuer">
+        Diterbitkan oleh - Satgas Wilayah Ekskul Pandu Digital Wilayah Sumatera Utara.
+    </p>
+
+    <p class="cert-card__year mono">
+        2022
+    </p>
+
+    <a
+        href="/M.%20ALIF%20RAMADHAN%20%282%29%20%281%29.pdf"
+        class="cert-card__btn"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Lihat Sertifikat
+
+        <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+        >
+            <path
+                d="M3 11L11 3M11 3H4M11 3V10"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+    </a>
+
+</article>
+
+        <article class="cert-card">
+
+            <div class="cert-card__thumb">
+                <img
+                    src="sertif.jpeg"
+                    alt="Thumbnail Sertifikat 6"
+                    loading="lazy"
+                    onerror="this.closest('.cert-card__thumb').classList.add('cert-card__thumb--fallback')"
+                >
+
+                <span class="cert-card__thumb-fallback mono">
+                    CERT
+                </span>
+            </div>
+
+            <p class="cert-card__id mono">
+                CERT/06
+            </p>
+
+            <h3>
+                Panitia Campus Expo MAN 1 Medan
+            </h3>
+
+            <p class="cert-card__issuer">
+                Diterbitkan oleh - Campus Expo MAN 1 Medan.
+            </p>
+
+            <p class="cert-card__year mono">
+                2024
+            </p>
+
+            <a
+                href="/Lokalkarya.jpeg"
+                class="cert-card__btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Lihat Sertifikat
+
+                <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                >
+                    <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+
+        </article>
+            
+    </div>
+
+    <p class="section-note mono">
+        // sertifikat & pencapaian
+    </p>
+
+</section>
+
+
+    <!-- Kontak -->
+    <section id="kontak">
+
+        <div class="section-head">
+            <p class="eyebrow mono">$ contact --send</p>
+            <h2>Mari Saling Terhubung</h2>
+        </div>
+
+        <div class="contact">
+
+            <!-- Email -->
+            <a
+                class="contact__card"
+                href="mailto:muhammadaliframadhanramadhan@gmail.com"
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M3 6h18v12H3V6Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    />
+                    <path
+                        d="m3 7 9 6 9-6"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+
+                <div>
+                    <span class="contact__label">Email</span>
+                    <span class="contact__value">
+                        muhammadaliframadhanramadhan@gmail.com
+                    </span>
+                </div>
+            </a>
+
+            <!-- Instagram -->
+            <a
+                class="contact__card"
+                href="https://www.instagram.com/alifframadhnn_/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect
+                        x="3"
+                        y="3"
+                        width="18"
+                        height="18"
+                        rx="5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    />
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    />
+                    <circle
+                        cx="17.2"
+                        cy="6.8"
+                        r="1.1"
+                        fill="currentColor"
+                    />
+                </svg>
+
+                <div>
+                    <span class="contact__label">Instagram</span>
+                    <span class="contact__value">
+                        @alifframadhnn_
+                    </span>
+                </div>
+            </a>
+
+            <!-- GitHub -->
+            <a
+                class="contact__card"
+                href="https://github.com/maliframadhan-hub"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
+                        stroke="currentColor"
+                        stroke-width="1.3"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+
+                <div>
+                    <span class="contact__label">GitHub</span>
+                    <span class="contact__value">
+                        @maliframadhan-hub
+                    </span>
+                </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+                class="contact__card"
+                href="https://www.linkedin.com/in/m-alif-ramadhan"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="16"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                    />
+                    <path
+                        d="M8 10v6"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                    />
+                    <circle
+                        cx="8"
+                        cy="7.5"
+                        r="1"
+                        fill="currentColor"
+                    />
+                    <path
+                        d="M12 16v-3.2c0-1.55.8-2.8 2.35-2.8S17 11.15 17 12.8V16"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                    />
+                    <path
+                        d="M12 12v4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                    />
+                </svg>
+
+                <div>
+                    <span class="contact__label">LinkedIn</span>
+                    <span class="contact__value">
+                        m-alif-ramadhan
+                    </span>
+                </div>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer__container">
+
+            <!-- Copyright -->
+            <div class="footer__brand">
+                <p class="mono">
+                    © 2026 M. Alif Ramadhan — Portfolio.
+                </p>
+            </div>
+
+            <!-- Built With -->
+            <div class="footer__built mono">
+                <span class="footer__built-label">built with</span>
+
+                <span class="footer__tech">
+                    <span class="footer__code">&lt;/&gt;</span>
+                    <span>Code</span>
+                </span>
+
+                <span class="footer__separator">+</span>
+
+                <span class="footer__tech footer__vite">
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 256 257"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M255.9 38.8 134.5 256.4c-2.3 4.1-8.2 4.1-10.5 0L.1 38.8c-2.5-4.5 1.4-9.8 6.5-8.9l119.5 21.3c.6.1 1.2.1 1.8 0L249.4 29.9c5.1-.9 8.9 4.4 6.5 8.9Z"
+                            fill="url(#viteGradient)"
+                        />
+                        <path
+                            d="m185.2 13.2-61.1 11-61.1-11L128 230.3l57.2-217.1Z"
+                            fill="#fff"
+                            fill-opacity=".25"
+                        />
+                        <defs>
+                            <linearGradient
+                                id="viteGradient"
+                                x1="21.4"
+                                y1="37.1"
+                                x2="146.4"
+                                y2="196.8"
+                                gradientUnits="userSpaceOnUse"
+                            >
+                                <stop stop-color="#41D1FF"/>
+                                <stop offset="1" stop-color="#BD34FE"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <span>Vite</span>
+                </span>
+            </div>
+
+            <!-- Clock -->
+            <div
+                class="footer__clock mono"
+                id="footerClock"
+                aria-label="Waktu saat ini"
+            >
+                <span
+                    class="footer__clock-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span id="clockTime">00:00:00</span>
+
+                <span
+                    class="footer__clock-date"
+                    id="clockDate"
+                >—</span>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button type="button" class="scroll-top" id="scrollTopBtn" aria-label="Kembali ke atas">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <!-- Javascript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
