@@ -37,6 +37,9 @@
     --max-w: 1120px;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
+    /* fallback sebelum JS menghitung tinggi navbar asli */
+    --nav-height: 74px;
+
     color-scheme: dark;
 }
 
