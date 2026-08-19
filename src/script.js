@@ -84,6 +84,9 @@ function run() {
         const navToggle = document.getElementById("navToggle");
         const navMenu = document.getElementById("navMenu");
         const navScrim = document.getElementById("navScrim");
+        // Tombol silang (X) di dalam panel menu mobile, di pojok kanan atas.
+        // Elemen ini opsional — kalau belum ada di HTML, fitur lain tetap jalan.
+        const navMenuClose = document.getElementById("navMenuClose");
 
         if (navToggle && navMenu && navScrim) {
             const openNav = () => {
@@ -117,7 +120,12 @@ function run() {
                 if (e.key === "Escape") closeNav();
             });
 
-            console.log("[nav-toggle] OK — hamburger siap.");
+            if (navMenuClose) {
+                navMenuClose.addEventListener("click", closeNav);
+                console.log("[nav-toggle] OK — hamburger + tombol silang (X) siap.");
+            } else {
+                console.warn("[nav-toggle] elemen #navMenuClose tidak ditemukan — tombol X di dalam panel dilewati (hamburger tetap jalan seperti biasa).");
+            }
         } else {
             console.warn("[nav-toggle] salah satu elemen (navToggle/navMenu/navScrim) tidak ditemukan.", {
                 navToggle: !!navToggle, navMenu: !!navMenu, navScrim: !!navScrim
