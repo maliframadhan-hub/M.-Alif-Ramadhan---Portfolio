@@ -110,6 +110,13 @@ function run() {
                 isOpen ? closeNav() : openNav();
             });
 
+            // Tombol silang (×) di dalam panel — menutup navbar/menu.
+            if (navMenuClose) {
+                navMenuClose.addEventListener("click", closeNav);
+            } else {
+                console.warn("[nav-toggle] tombol #navMenuClose tidak ditemukan.");
+            }
+
             navScrim.addEventListener("click", closeNav);
 
             navMenu.querySelectorAll("a").forEach((link) => {

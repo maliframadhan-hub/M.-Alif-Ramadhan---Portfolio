@@ -1734,7 +1734,7 @@ section {
 .skill-card__bar-fill--violet { background: var(--violet); }
 .skill-card__bar-fill--green { background: var(--green); }
 .skill-card__bar-fill--teal { background: var(--teal); }
-.skill-card__icon--amber { color: var(--amber); background: var(--amber-soft); }
+.skill-card__bar-fill--amber { background: var(--amber); }
 
 .skill-card__desc {
     color: var(--text-muted);
