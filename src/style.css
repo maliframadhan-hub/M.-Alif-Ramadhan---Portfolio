@@ -80,6 +80,11 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* overflow-x:hidden lives here (not on body) — some mobile browsers
+       (notably iOS Safari) treat overflow-x:hidden on <body> as a private
+       scrolling container, which breaks position:fixed descendants
+       (nav, modals, scroll-top button) so they visibly jump/drift on scroll. */
+    overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -98,7 +103,6 @@ body {
     font-weight: 300;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
     transition: background 0.35s var(--ease), color 0.35s var(--ease);
     min-width: 320px;
     user-select: none;
@@ -453,6 +457,7 @@ nav ul a.active {
     top: 0;
     right: 0;
     height: 100vh;
+    height: 100dvh; /* falls back silently to 100vh on browsers that don't support dvh */
     width: min(78vw, 320px);
     display: flex;
     flex-direction: column;
