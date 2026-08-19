@@ -1234,7 +1234,7 @@ nav ul a.active {
    HERO
    ============================================ */
 header#home {
-    min-height: 92vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1330,7 +1330,7 @@ header#home {
 
 .hero-stats {
     margin-top: 44px;
-    margin-bottom: 64px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2616,7 +2616,11 @@ footer {
 
     .section-head { margin-bottom: 36px; }
 
-    header#home { min-height: 88vh; padding: 100px 20px 40px; }
+   header#home {
+    min-height: 100vh;   /* fallback untuk browser lama */
+    min-height: 100svh;  /* browser modern: sesuai layar yang benar-benar kelihatan */
+    padding: 100px 20px 40px;
+}
 
     .hero-actions { gap: 10px; }
 
@@ -2659,7 +2663,11 @@ footer {
        already hidden at the 860px breakpoint above */
     .secure-badge svg { width: 15px; height: 15px; }
 
-    header#home { padding: 88px 16px 32px; }
+    header#home {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 88px 16px 32px;
+    }
 
     .hero-text h1 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
 
