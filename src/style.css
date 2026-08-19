@@ -464,7 +464,7 @@ nav ul a.active {
     align-items: stretch;
     justify-content: flex-start;
     gap: 4px;
-    padding: 96px 20px 40px;
+    padding: 96px 20px calc(40px + env(safe-area-inset-bottom));
     background: var(--bg-alt);
     border-left: 1px solid var(--border);
     transform: translateX(100%);
@@ -914,6 +914,7 @@ nav ul a.active {
     width: 100%;
     max-width: 720px;
     max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -1025,6 +1026,7 @@ nav ul a.active {
     width: 100%;
     max-width: 720px;
     max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -1146,6 +1148,7 @@ nav ul a.active {
     width: 100%;
     max-width: 460px;
     max-height: 86vh;
+    max-height: 86dvh;
     overflow-y: auto;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -1232,10 +1235,18 @@ nav ul a.active {
 
 /* ============================================
    HERO
+   ------------------------------------------
+   Height & padding are defined ONCE here using
+   consistent units (dvh + safe-area-inset) and
+   only OVERRIDDEN for padding-top/side spacing
+   in media queries below — min-height and the
+   safe-area-aware bottom padding stay identical
+   at every breakpoint so mobile toolbars never
+   cover the hero-stats row again.
    ============================================ */
 header#home {
-    min-height: 100vh;                              /* fallback lama */
-    min-height: 100dvh;                              /* menyesuaikan toolbar Chrome */
+    min-height: 100vh;   /* fallback for old browsers without dvh support */
+    min-height: 100dvh;  /* tracks the mobile browser toolbar showing/hiding */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1422,7 +1433,7 @@ header#home {
 .scroll-top {
     position: fixed;
     right: 24px;
-    bottom: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
     z-index: 90;
     display: flex;
     align-items: center;
@@ -1453,7 +1464,7 @@ header#home {
 }
 
 @media (max-width: 480px) {
-    .scroll-top { right: 16px; bottom: 16px; width: 42px; height: 42px; }
+    .scroll-top { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 42px; height: 42px; }
 }
 
 /* ============================================
@@ -2407,7 +2418,7 @@ section {
    ============================================ */
 
 footer {
-    padding: 32px 24px 48px;
+    padding: 32px 24px calc(48px + env(safe-area-inset-bottom));
 }
 
 .footer__container {
@@ -2610,6 +2621,11 @@ footer {
 
 /* ============================================================
    RESPONSIVE — TABLET PORTRAIT (≤ 720px)
+   ------------------------------------------------------------
+   Only padding/side-spacing is adjusted here — min-height and
+   the safe-area-aware bottom padding formula for header#home
+   are intentionally NOT redefined, so they stay identical to
+   the base rule above at every breakpoint below this one too.
    ============================================================ */
 @media (max-width: 720px) {
 
@@ -2618,9 +2634,10 @@ footer {
     .section-head { margin-bottom: 36px; }
 
     header#home {
-        min-height: 100vh;   /* fallback untuk browser lama */
-        min-height: 100dvh;  /* menyesuaikan toolbar Chrome naik/turun */
-        padding: 100px 20px calc(40px + env(safe-area-inset-bottom));
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: calc(40px + env(safe-area-inset-bottom));
     }
 
     .hero-actions { gap: 10px; }
@@ -2634,11 +2651,16 @@ footer {
     .manifesto { padding: 40px 20px; margin-top: 48px; }
 
     .cert-modal, .project-modal { padding: 16px; }
-    .cert-modal__imgwrap, .project-modal__imgwrap { max-height: 42vh; }
-    .cert-modal__imgwrap img, .project-modal__imgwrap img { max-height: 42vh; }
+    .cert-modal__imgwrap, .project-modal__imgwrap { max-height: 42vh; max-height: 42dvh; }
+    .cert-modal__imgwrap img, .project-modal__imgwrap img { max-height: 42vh; max-height: 42dvh; }
 }
+
 /* ============================================================
    RESPONSIVE — PHONE (≤ 480px)
+   ------------------------------------------------------------
+   Same note as above: header#home's min-height/bottom-padding
+   formula is never redefined here — only padding-top/side and
+   everything else shrink further for small phones.
    ============================================================ */
 @media (max-width: 480px) {
 
@@ -2664,9 +2686,10 @@ footer {
     .secure-badge svg { width: 15px; height: 15px; }
 
     header#home {
-        min-height: 100vh;
-        min-height: 100svh;
-        padding: 88px 16px 32px;
+        padding-top: 88px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: calc(32px + env(safe-area-inset-bottom));
     }
 
     .hero-text h1 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
@@ -2712,7 +2735,7 @@ footer {
 
     .contact__card { padding: 18px; gap: 12px; }
 
-    footer { padding: 20px 12px 28px; }
+    footer { padding: 20px 12px calc(28px + env(safe-area-inset-bottom)); }
 
     .footer__container {
         width: 100%;
@@ -2753,8 +2776,8 @@ footer {
     .footer__clock-date { display: inline-block; }
 
     .cert-modal, .project-modal { max-width: 100%; padding: 14px; }
-    .cert-modal__imgwrap, .project-modal__imgwrap { max-height: 36vh; }
-    .cert-modal__imgwrap img, .project-modal__imgwrap img { max-height: 36vh; }
+    .cert-modal__imgwrap, .project-modal__imgwrap { max-height: 36vh; max-height: 36dvh; }
+    .cert-modal__imgwrap img, .project-modal__imgwrap img { max-height: 36vh; max-height: 36dvh; }
 }
 
 /* ============================================================
